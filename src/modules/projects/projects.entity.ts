@@ -1,5 +1,5 @@
-
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import {Employee} from '../employees/employee.entity';
 
 @Table
 export class Project extends Model<Project> {
@@ -33,13 +33,13 @@ export class Project extends Model<Project> {
   })
   image: string;
 
-  // @ForeignKey(()=> EMPLOYEE)
-  // @Column({
-  //   type: DataType.INTEGER,
-  //   allowNull: false,
-  // })
-  // EMPLOYEEID: number;
+  @ForeignKey(()=> Employee)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  employeeId: number;
 
-  // @BelongsTo(()=> EMPLOYEE)
-  // employee: EMPLOYEE!
+  @BelongsTo(()=> Employee)
+  employee: Employee;
 }
