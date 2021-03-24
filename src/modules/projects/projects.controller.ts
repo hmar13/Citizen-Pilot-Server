@@ -31,7 +31,7 @@ export class ProjectsController {
   @Post()
   async create(@Body() project: ProjectDto, @Request() req): Promise<ProjectEntity> {
     // create a new project and return the newly created project
-    return await this. projectService.create(project, req.employee.id)
+    return await this.projectService.create(project, req.employee.id)
   }
 
   @UseGuards(AuthGuard('jwt'))

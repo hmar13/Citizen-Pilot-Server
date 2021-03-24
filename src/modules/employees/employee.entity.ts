@@ -2,6 +2,12 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
 export class Employee extends Model<Employee> {
+  // @Column({
+  //   type: DataType.INTEGER,
+  //   allowNull: false,
+  // })
+  // userId: number;
+
   @Column({
     type: DataType.STRING,
     allowNull: false,

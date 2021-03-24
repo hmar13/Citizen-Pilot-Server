@@ -8,10 +8,10 @@ import {NEWS_REPOSITORY} from '../../core/constants'
 export class NewsService {
   constructor(@Inject(NEWS_REPOSITORY) private readonly newsRepository: typeof News) {  }
 
-  async create(news: NewsDto, employeeId): Promise<News> {
+  async create(news: NewsDto, userId): Promise<News> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return await this. newsRepository.create<News>({...news, employeeId})
+    return await this. newsRepository.create<News>({...news, userId})
   }
 
   async findAll(): Promise<News[]> {

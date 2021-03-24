@@ -22,7 +22,7 @@ export class Project extends Model<Project> {
   location: string;
 
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.DECIMAL,
     allowNull: false,
   })
   completion: number;

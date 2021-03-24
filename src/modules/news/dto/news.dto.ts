@@ -7,7 +7,7 @@ export class NewsDto {
 
     @IsNotEmpty()
     @MinLength(10)
-    readonly shrotDescription: string;
+    readonly shortDescription: string;
 
     @IsNotEmpty()
     @MinLength(10)

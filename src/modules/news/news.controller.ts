@@ -30,15 +30,16 @@ export class NewsController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   async create(@Body() news: NewsDto, @Request() req): Promise<NewsEntity> {
+    
     // create a new project and return the newly created project
-    return await this. newsService.create(news, req.employee.id)
+    return await this. newsService.create(news, req.user.id)
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(@Param('id') id: number, @Body() news: NewsDto, @Request() req): Promise<NewsEntity> {
     // get the number of row affected and the updated post
-    const { numberOfAffectedRows, updatedNews } = await this.newsService.update(id, news, req.employee.id);
+    const { numberOfAffectedRows, updatedNews } = await this.newsService.update(id, news, req.user.id);
 
     // if the number of row affected is zero,
     // it means the post doesn't exist in our db
