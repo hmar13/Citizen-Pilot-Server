@@ -7,6 +7,7 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ProposalsModule } from './modules/proposals/proposals.module';
 import { FavouritesModule } from './modules/favourites/favourites.module';
+import { ReportsModule } from './modules/reports/reports.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { FavouritesModule } from './modules/favourites/favourites.module';
     AuthModule,
     ProposalsModule,
     FavouritesModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

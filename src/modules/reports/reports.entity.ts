@@ -4,24 +4,17 @@ import {
   Model,
   DataType,
   ForeignKey,
-  BelongsTo,
+  BelongsTo
 } from 'sequelize-typescript';
 import { User } from '../users/user.entity';
 
 @Table
-export class Favourite extends Model<Favourite> {
+export class Report extends Model<Report> {
   @Column({
-    type: DataType.STRING,
-    allowNull: false,
-    values: ['proposals', 'reports'],
-  })
-  type: string;
-
-  @Column({
-    type: DataType.STRING,
+    type: DataType.BOOLEAN,
     allowNull: false,
   })
-  title: string;
+  urgency: boolean;
 
   @Column({
     type: DataType.TEXT,
@@ -30,20 +23,33 @@ export class Favourite extends Model<Favourite> {
   description: string;
 
   @Column({
-    type: DataType.TEXT,
+    type: DataType.FLOAT,
     allowNull: false,
   })
-  location: string;
+  longitude: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.FLOAT,
     allowNull: false,
   })
-  votes: string;
+  latitude: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    values: [
+      'roads and streets',
+      'transport',
+      'envrionment',
+      'sanitation',
+      'utilities',
+    ]
+  })
+  category: string;
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
   })
   image: string;
 
