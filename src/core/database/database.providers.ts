@@ -3,6 +3,9 @@ import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import { User } from '../../modules/users/user.entity';
 import { Proposal } from '../../modules/proposals/proposals.entity';
+import {News} from '../../modules/news/news.entity';
+import {Employee} from '../../modules/employees/employee.entity';
+import {Project} from '../../modules/projects/projects.entity';
 
 export const databaseProviders = [{
     provide: SEQUELIZE,
@@ -22,7 +25,7 @@ export const databaseProviders = [{
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Proposal]);
+      sequelize.addModels([User, Employee, Proposal, Project, News]);
       await sequelize.sync();
       return sequelize;
     },
