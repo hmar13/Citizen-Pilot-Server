@@ -37,7 +37,7 @@ export class Favourite extends Model<Favourite> {
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
   })
   votes: string;
 
@@ -46,6 +46,12 @@ export class Favourite extends Model<Favourite> {
     allowNull: false,
   })
   image: string;
+
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+  })
+  completion: string;
 
   @ForeignKey(() => User)
   @Column({

@@ -18,6 +18,7 @@ export class FavouritesDto {
   @IsNotEmpty()
   readonly image: string;
 
-  @IsNotEmpty()
   readonly votes: string;
+
+  readonly completion: string;
 }
