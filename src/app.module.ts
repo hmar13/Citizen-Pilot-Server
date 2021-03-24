@@ -8,6 +8,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ProposalsModule } from './modules/proposals/proposals.module';
 import { FavouritesModule } from './modules/favourites/favourites.module';
 import { ReportsModule } from './modules/reports/reports.module';
+import { ProjectsModule } from './modules/projects/projects.module';
+import { EmployeeModule } from './modules/employees/employee.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { ReportsModule } from './modules/reports/reports.module';
     ProposalsModule,
     FavouritesModule,
     ReportsModule,
+    ProjectsModule,
+    EmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
