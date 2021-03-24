@@ -8,6 +8,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ProposalsModule } from './modules/proposals/proposals.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { EmployeeModule } from './modules/employees/employee.module';
+import { FavouritesModule } from './modules/favourites/favourites.module';
+import { ReportsModule } from './modules/reports/reports.module';
+
 
 @Module({
   imports: [
@@ -18,6 +21,8 @@ import { EmployeeModule } from './modules/employees/employee.module';
     ProposalsModule,
     ProjectsModule,
     EmployeeModule,
+    FavouritesModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
