@@ -9,6 +9,7 @@ import { ProposalsModule } from './modules/proposals/proposals.module';
 <<<<<<< HEAD
 import { FavouritesModule } from './modules/favourites/favourites.module';
 import { ReportsModule } from './modules/reports/reports.module';
+import { ContactsModule } from './modules/contacts/contacts.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { EmployeeModule } from './modules/employees/employee.module';
 =======
@@ -31,6 +32,7 @@ import { ReportsModule } from './modules/reports/reports.module';
     ReportsModule,
     ProjectsModule,
     EmployeeModule,
+    ContactsModule,
 =======
     ProjectsModule,
     EmployeeModule,

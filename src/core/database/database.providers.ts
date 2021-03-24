@@ -5,6 +5,7 @@ import { User } from '../../modules/users/user.entity';
 import { Proposal } from '../../modules/proposals/proposals.entity';
 import { Favourite } from '../../modules/favourites/favourites.entity';
 import { Report } from '../../modules/reports/reports.entity';
+import { Contact } from '../../modules/contacts/contacts.entity';
 
 export const databaseProviders = [{
     provide: SEQUELIZE,
@@ -24,7 +25,7 @@ export const databaseProviders = [{
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Proposal, Favourite, Report]);
+      sequelize.addModels([User, Proposal, Favourite, Report, Contact]);
       await sequelize.sync();
       return sequelize;
     },
