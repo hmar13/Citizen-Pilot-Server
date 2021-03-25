@@ -16,5 +16,8 @@ export class UserDto {
   readonly password: string;
 
   @IsOptional()
-  readonly favourites: number[];
+  readonly favourites: string[];
+
+  @IsOptional()
+  readonly voted: number[];
 }

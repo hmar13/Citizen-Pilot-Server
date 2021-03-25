@@ -28,8 +28,12 @@ export class User extends Model<User> {
   password: string;
 
   @Column({
-    type: DataType.ARRAY(DataType.INTEGER),
-    allowNull: true,
+    type: DataType.ARRAY(DataType.STRING),
   })
-  favourites: number[];
+  favourites: string[];
+
+  @Column({
+    type: DataType.ARRAY(DataType.INTEGER),
+  })
+  voted: number[];
 }

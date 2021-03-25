@@ -10,11 +10,9 @@
 
 //   @UseGuards(AuthGuard('jwt'))
 //   @Put(':id')
-//   async update(@Param('id') id: number, @Body() post: UserDto, @Request() req): Promise<UserEntity> {
+//   async update(@Param('id') id: string, @Request() req): Promise<UserEntity> {
 //     // get the number of row affected and the updated post
-//     const { numberOfAffectedRows, updatedFavourites } = await this.usersService.update(
-//       post, req.user.id
-//     );
+//     const { numberOfAffectedRows, updatedFavourites } = await this.usersService.update(id, req.user.id);
 
 //     // if the number of row affected is zero,
 //     // it means the post doesn't exist in our db
