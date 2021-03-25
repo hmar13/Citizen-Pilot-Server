@@ -13,10 +13,6 @@ import { ProjectsModule } from './modules/projects/projects.module';
 import { EmployeeModule } from './modules/employees/employee.module';
 import { NewsModule } from './modules/news/news.module';
 import {AuthModuleEM} from './modules/emAUTH/auth.module';
-import { ProjectsModule } from './modules/projects/projects.module';
-import { EmployeeModule } from './modules/employees/employee.module';
-import { FavouritesModule } from './modules/favourites/favourites.module';
-import { ReportsModule } from './modules/reports/reports.module';
 
 @Module({
   imports: [
