@@ -12,7 +12,6 @@ import { ContactsModule } from './modules/contacts/contacts.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { EmployeeModule } from './modules/employees/employee.module';
 import { NewsModule } from './modules/news/news.module';
-import {AuthModuleEM} from './modules/emAUTH/auth.module';
 
 @Module({
   imports: [
@@ -20,7 +19,6 @@ import {AuthModuleEM} from './modules/emAUTH/auth.module';
     DatabaseModule,
     UsersModule,
     AuthModule,
-    AuthModuleEM,
     ProposalsModule,
     FavouritesModule,
     ReportsModule,
