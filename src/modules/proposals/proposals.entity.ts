@@ -33,6 +33,12 @@ export class Proposal extends Model<Proposal> {
   })
   votes: string;
 
+  @Column({
+    type: DataType.BOOLEAN,
+    allowNull: false,
+  })
+  approved: boolean;
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,

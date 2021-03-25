@@ -16,11 +16,19 @@ export class UsersService {
   }
 
   async findOneByEmail(email: string): Promise<User> {
-    console.log('Users Service', email);
     return await this.userRepository.findOne<User>({ where: { email } });
   }
 
   async findOneById(id: number): Promise<User> {
     return await this.userRepository.findOne<User>({ where: { id } });
   }
+
+  // Get all favourites
+
+
 }
+
+
+// Delete a favourite
+
+// Add a favourite

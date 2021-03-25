@@ -27,6 +27,12 @@ export class ProposalsService {
     });
   }
 
+  async findAllApproved(): Promise<Proposal[]> {
+    return await this.proposalRepository.findAll<Proposal>({
+      where: { approved: true },
+    });
+  }
+
   async delete(id, userId) {
     return await this.proposalRepository.destroy({ where: { id, userId } });
   }
