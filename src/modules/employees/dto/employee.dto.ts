@@ -6,6 +6,9 @@ enum Gender {
 }
 
 export class EmployeeDto {
+  // @IsNotEmpty()
+  // readonly userId: number;
+
   @IsNotEmpty()
   readonly name: string;
 

@@ -1,44 +1,45 @@
 import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, UseGuards, Request, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { ProjectsService } from './projects.service';
-import { Project as ProjectEntity } from './projects.entity';
-import { ProjectDto } from './dto/project.dto';
+import { NewsService } from './news.service';
+import { News as NewsEntity } from './news.entity';
+import { NewsDto } from './dto/news.dto';
 
-@Controller('projects')
-export class ProjectsController {
-  constructor(private readonly projectService: ProjectsService) {}
+@Controller('news')
+export class NewsController {
+  constructor(private readonly newsService: NewsService) {}
 
   @Get()
   async findAll() {
     // get all projects in the db
-    return await this.projectService.findAll();
+    return await this.newsService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: number): Promise<ProjectEntity> {
+  async findOne(@Param('id') id: number): Promise<NewsEntity> {
     // find the post with this id
-    const post = await this.projectService.findOne(id);
+    const news = await this.newsService.findOne(id);
 
     // if the project doesn't exist in the db, throw a 404 error
-    if (!post) {
+    if (!news) {
       throw new NotFoundException('This project doesn\'t exist')
     }
 
-    return post;
+    return news;
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  async create(@Body() project: ProjectDto, @Request() req): Promise<ProjectEntity> {
+  async create(@Body() news: NewsDto, @Request() req): Promise<NewsEntity> {
+    
     // create a new project and return the newly created project
-    return await this.projectService.create(project, req.employee.id)
+    return await this. newsService.create(news, req.user.id)
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Put(':id')
-  async update(@Param('id') id: number, @Body() project: ProjectDto, @Request() req): Promise<ProjectEntity> {
+  async update(@Param('id') id: number, @Body() news: NewsDto, @Request() req): Promise<NewsEntity> {
     // get the number of row affected and the updated post
-    const { numberOfAffectedRows, updatedProject } = await this.projectService.update(id, project, req.employee.id);
+    const { numberOfAffectedRows, updatedNews } = await this.newsService.update(id, news, req.user.id);
 
     // if the number of row affected is zero,
     // it means the post doesn't exist in our db
@@ -47,14 +48,14 @@ export class ProjectsController {
     }
 
     // return the updated post
-    return updatedProject;
+    return updatedNews;
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
     // delete the post with this id
-    const deleted = await this.projectService.delete(id, req.employee.id);
+    const deleted = await this.newsService.delete(id, req.employee.id);
 
     // if the number of row affected is zero,
     // then the post doesn't exist in our db
