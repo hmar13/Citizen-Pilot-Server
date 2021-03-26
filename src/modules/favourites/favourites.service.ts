@@ -24,10 +24,10 @@ export class FavouritesService {
     return await this.favouritesRepository.destroy({ where: { id, userId }})
   }
 
-  async update(id, data, userId) {
-    const [numberOfAffectedRows, [updatedPost]] = await this.favouritesRepository.update(
-      { ...data }, { where: { id, userId }, returning: true });
+  // async update(id, data, userId) {
+  //   const [numberOfAffectedRows, [updatedPost]] = await this.favouritesRepository.update(
+  //     { ...data }, { where: { id, userId }, returning: true });
 
-    return { numberOfAffectedRows, updatedPost };
-  }
+  //   return { numberOfAffectedRows, updatedPost };
+  // }
 }

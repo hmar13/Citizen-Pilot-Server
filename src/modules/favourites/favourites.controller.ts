@@ -47,20 +47,20 @@ export class FavouritesController {
     return 'Sucessfully delete';
   }
 
-  @UseGuards(AuthGuard('jwt'))
-  @Put(':id')
-  async update(@Param('id') id: number, @Body() favourite: FavouritesDto, @Request() req): Promise<FavouriteEntity> {
-      // get the row number affected and the updated favourite
-      const { numberOfAffectedRows, updatedPost } = await this.favouriteService.update(
-        id, favourite, req.user.id
-      )
+  // @UseGuards(AuthGuard('jwt'))
+  // @Put(':id')
+  // async update(@Param('id') id: number, @Body() favourite: FavouritesDto, @Request() req): Promise<FavouriteEntity> {
+  //     // get the row number affected and the updated favourite
+  //     const { numberOfAffectedRows, updatedPost } = await this.favouriteService.update(
+  //       id, favourite, req.user.id
+  //     )
 
-      //If the number of rows affected is zero, then the post doesn't exist
-      if (numberOfAffectedRows === 0) {
-        throw new NotFoundException('This Post doesn\'t exist');
-      }
+  //     //If the number of rows affected is zero, then the post doesn't exist
+  //     if (numberOfAffectedRows === 0) {
+  //       throw new NotFoundException('This Post doesn\'t exist');
+  //     }
 
-      // return the updated post
-      return updatedPost;
-    }
+  //     // return the updated post
+  //     return updatedPost;
+  //   }
 }
