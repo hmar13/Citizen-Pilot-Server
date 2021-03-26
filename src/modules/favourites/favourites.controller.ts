@@ -19,10 +19,11 @@ import { FavouritesDto } from './dto/favourites.dto';
 export class FavouritesController {
   constructor(private readonly favouriteService: FavouritesService) { }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
-  async findAll() {
-    //get all the favourites in the db //TODO: Change this to just the userId
-    return await this.favouriteService.findAll();
+  async findAll(@Request() req): Promise<FavouriteEntity[]> {
+    //get all the favourites in the db based off userId
+    return await this.favouriteService.findAll(req.user.id);
   }
 
   @UseGuards(AuthGuard('jwt'))

@@ -14,10 +14,10 @@ export class FavouritesService {
     return await this.favouritesRepository.create<Favourite>({ ...favourites, userId})
   }
 
-  async findAll(): Promise<Favourite[]> {
-    return await this.favouritesRepository.findAll<Favourite>({
-      include: [{ model: User, attributes: { exclude: ['password'] } }],
-    });
+  async findAll(userId): Promise<Favourite[]> {
+    return await this.favouritesRepository.findAll<Favourite>(
+      { where: { userId }}
+    );
   }
 
   async delete(id, userId) {
