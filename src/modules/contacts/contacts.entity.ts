@@ -16,7 +16,7 @@ export class Contact extends Model<Contact> {
   phone: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
   email: string;

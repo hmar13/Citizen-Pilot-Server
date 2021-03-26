@@ -20,12 +20,12 @@ export class ProposalsService {
     });
   }
 
-  //Increment vote on proposal
-  // async increment(id): Promise<Proposal> {
-  //   return await this.proposalRepository.increment(
-  //     'votes', { where: { id }}
-  //   )
-  // }
+  // Increment vote on proposal and add a row to Vote
+  async increment(id, userId): Promise<Proposal> {
+    return await this.proposalRepository.increment(
+      'votes', { where: { id }}
+    )
+  }
 
   async findAllApproved(): Promise<Proposal[]> {
     return await this.proposalRepository.findAll<Proposal>({

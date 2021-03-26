@@ -11,15 +11,4 @@ export class VotesService {
     return await this.votesRepository.findAll<Votes>({})
   }
 
-  // async create(): Promise<Votes> {
-  //   return await this.votesRepository.create<Votes>()
-  // }
-
-
-  // // Increment vote on proposal
-  // async increment(id): Promise<Proposal> {
-  //   return await this.proposalRepository.increment(
-  //     'votes', { where: { id }}
-  //   )
-  // }
 }
