@@ -38,6 +38,13 @@ export class News extends Model<News> {
   })
   date: string;
 
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    values: ['General', 'Road-closures', 'Weather-warnings', 'Transport-delays', 'Reminders'],
+  })
+  categories: string;
+
   @ForeignKey(()=> Employee)
   @Column({
     type: DataType.INTEGER,

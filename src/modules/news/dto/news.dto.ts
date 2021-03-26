@@ -16,6 +16,8 @@ export class NewsDto {
     @IsNotEmpty()
     readonly location: string;
 
+    readonly categories: string;
+
     readonly image: string;
 
     readonly date: string;
