@@ -16,4 +16,7 @@ export class ProposalDto {
 
     @IsNotEmpty()
     readonly votes: string;
+
+    @IsNotEmpty()
+    readonly approved: boolean;
 }

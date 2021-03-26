@@ -22,4 +22,18 @@ export class UsersService {
   async findOneById(id: number): Promise<User> {
     return await this.userRepository.findOne<User>({ where: { id } });
   }
+
+  // Add a favourite
+  // async update(id, data) {
+  //   console.log('data: ', data, 'id', id)
+  //   const [numberOfAffectedRows, [updatedFavourites]] = await this.userRepository.update(
+  //     { favourites: id }, { where: { data }, returning: true }
+  //   );
+  //   return { numberOfAffectedRows, updatedFavourites };
+  // }
+
+  // Delete a favourite
+
+  // Add voted
+
 }

@@ -6,7 +6,13 @@ export class User extends Model<User> {
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  fname: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  lname: string;
 
   @Column({
     type: DataType.STRING,
@@ -22,9 +28,12 @@ export class User extends Model<User> {
   password: string;
 
   @Column({
-    type: DataType.ENUM,
-    values: ['male', 'female'],
-    allowNull: false,
+    type: DataType.ARRAY(DataType.STRING),
   })
-  gender: string;
+  favourites: string[];
+
+  @Column({
+    type: DataType.ARRAY(DataType.INTEGER),
+  })
+  voted: number[];
 }
