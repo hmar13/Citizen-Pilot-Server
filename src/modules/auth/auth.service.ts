@@ -57,10 +57,10 @@ export class AuthService {
     const { password, ...result } = newUser['dataValues'];
 
     // generate token
-    const token = await this.generateToken(result);
+    // const token = await this.generateToken(result);
 
     // return the user and the token
-    return { user: result, token };
+    return { user: result };
   }
 
   public async empCreate(employee) {
@@ -74,10 +74,10 @@ export class AuthService {
     const { password, ...result } = newEmployee['dataValues'];
 
     // generate token
-    const token = await this.generateToken(result);
+    // const token = await this.generateToken(result);
 
     // return the employee and the token
-    return { employee: result, token };
+    return { employee: result };
   }
 
   private async generateToken(user) {
