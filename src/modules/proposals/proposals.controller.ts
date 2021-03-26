@@ -22,21 +22,6 @@ export class ProposalsController {
     if (!post) {
       throw new NotFoundException('This Post doesn\'t exist');
     }
-
-    // if post exist, return the post
-    return post;
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: number): Promise<ProposalEntity> {
-    // find the post with this id
-    const post = await this.proposalService.findOne(id);
-
-    // if the post doesn't exit in the db, throw a 404 error
-    if (!post) {
-      throw new NotFoundException('This Post doesn\'t exist');
-    }
-
     // if post exist, return the post
     return post;
   }
@@ -53,15 +38,25 @@ export class ProposalsController {
   async update(@Param('id') id: number, @Body() post: ProposalDto, @Request() req): Promise<ProposalEntity> {
     // get the number of row affected and the updated post
     const { numberOfAffectedRows, updatedPost } = await this.proposalService.update(id, post, req.user.id);
-
     // if the number of row affected is zero,
     // it means the post doesn't exist in our db
     if (numberOfAffectedRows === 0) {
         throw new NotFoundException('This Post doesn\'t exist');
     }
-
     // return the updated post
     return updatedPost;
+  }
+
+  @Put('vote/:id')
+  async increment(@Param('id') id: number): Promise<ProposalEntity> {
+    // find the post with this id and increment vote
+    const post = await this.proposalService.increment(id);
+    // if the post doesn't exit in the db, throw a 404 error
+    if (!post) {
+      throw new NotFoundException('This Post doesn\'t exist');
+    }
+    // if post exist, return the post
+    return post;
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -69,13 +64,11 @@ export class ProposalsController {
   async remove(@Param('id') id: number, @Request() req) {
     // delete the post with this id
     const deleted = await this.proposalService.delete(id, req.user.id);
-
     // if the number of row affected is zero,
     // then the post doesn't exist in our db
     if (deleted === 0) {
         throw new NotFoundException('This Post doesn\'t exist');
     }
-
     // return success message
     return 'Successfully deleted';
   }

@@ -3,6 +3,7 @@ import { Proposal } from './proposals.entity';
 import { ProposalDto } from './dto/proposal.dto';
 import { User } from '../users/user.entity';
 import { PROPOSALS_REPOSITORY } from '../../core/constants';
+import sequelize from 'sequelize';
 
 @Injectable()
 export class ProposalsService {
@@ -20,11 +21,11 @@ export class ProposalsService {
     });
   }
 
-  async findOne(id): Promise<Proposal> {
-    return await this.proposalRepository.findOne({
-      where: { id },
-      include: [{ model: User, attributes: { exclude: ['password'] } }],
-    });
+  //Increment vote on proposal
+  async increment(id): Promise<Proposal> {
+    return await this.proposalRepository.increment(
+      'votes', { where: { id }}
+    )
   }
 
   async findAllApproved(): Promise<Proposal[]> {
