@@ -1,5 +1,7 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsToMany } from 'sequelize-typescript';
 import { User } from '../users/user.entity';
+import { Votes } from '../votes/votes.entity';
+
 
 @Table
 export class Proposal extends Model<Proposal> {
@@ -46,6 +48,6 @@ export class Proposal extends Model<Proposal> {
   })
   userId: number;
 
-  @BelongsTo(() => User)
-  user: User;
+  @BelongsToMany(() => User, () => Votes)
+  users: User[]
 }

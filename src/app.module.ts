@@ -12,6 +12,7 @@ import { ContactsModule } from './modules/contacts/contacts.module';
 import { ProjectsModule } from './modules/projects/projects.module';
 import { EmployeeModule } from './modules/employees/employee.module';
 import { NewsModule } from './modules/news/news.module';
+import { VotesModule } from './modules/votes/votes.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { NewsModule } from './modules/news/news.module';
     NewsModule,
     FavouritesModule,
     ReportsModule,
+    VotesModule,
 
   ],
   controllers: [AppController],

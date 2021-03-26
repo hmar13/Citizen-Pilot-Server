@@ -9,6 +9,8 @@ import {Project} from '../../modules/projects/projects.entity';
 import { Favourite } from '../../modules/favourites/favourites.entity';
 import { Report } from '../../modules/reports/reports.entity';
 import { Contact } from '../../modules/contacts/contacts.entity';
+import { Votes } from '../../modules/votes/votes.entity';
+
 
 export const databaseProviders = [{
     provide: SEQUELIZE,
@@ -28,7 +30,7 @@ export const databaseProviders = [{
           config = databaseConfig.development;
       }
       const sequelize = new Sequelize(config);
-      sequelize.addModels([User, Employee, Proposal, Project, News, Favourite, Report, Contact]);
+      sequelize.addModels([User, Employee, Proposal, Project, News, Favourite, Report, Contact, Votes]);
       await sequelize.sync();
       return sequelize;
     },

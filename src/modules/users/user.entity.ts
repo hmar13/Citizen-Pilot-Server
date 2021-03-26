@@ -1,4 +1,6 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, BelongsToMany } from 'sequelize-typescript';
+import { Proposal } from '../proposals/proposals.entity';
+import { Votes } from '../votes/votes.entity';
 
 @Table
 export class User extends Model<User> {
@@ -36,4 +38,7 @@ export class User extends Model<User> {
     type: DataType.ARRAY(DataType.INTEGER),
   })
   voted: number[];
+
+  @BelongsToMany(() => Proposal, () => Votes)
+  proposals: Proposal[]
 }
