@@ -30,7 +30,6 @@ export class NewsController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   async create(@Body() news: NewsDto, @Request() req): Promise<NewsEntity> {
-    
     // create a new project and return the newly created project
     return await this. newsService.create(news, req.user.id)
   }

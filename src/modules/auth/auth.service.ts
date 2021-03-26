@@ -63,21 +63,21 @@ export class AuthService {
     return { user: result, token };
   }
 
-  public async empCreate(user) {
+  public async empCreate(employee) {
     // hash the password
-    const pass = await this.hashPassword(user.password);
+    const pass = await this.hashPassword(employee.password);
 
-    // create the user
-    const newUser = await this.employeeService.create({ ...user, password: pass });
+    // create the employee
+    const newEmployee = await this.employeeService.create({ ...employee, password: pass });
 
     // tslint:disable-next-line: no-string-literal
-    const { password, ...result } = newUser['dataValues'];
+    const { password, ...result } = newEmployee['dataValues'];
 
     // generate token
     const token = await this.generateToken(result);
 
-    // return the user and the token
-    return { user: result, token };
+    // return the employee and the token
+    return { employee: result, token };
   }
 
   private async generateToken(user) {

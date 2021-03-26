@@ -34,8 +34,7 @@ export class News extends Model<News> {
   image: string;
 
   @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
+    type: DataType.STRING,
   })
   date: string;
 
