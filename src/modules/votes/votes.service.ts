@@ -11,4 +11,9 @@ export class VotesService {
     return await this.votesRepository.findAll<Votes>({})
   }
 
+  async create(proposalId, userId): Promise<Votes> {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return await this.votesRepository.create<Votes>({ proposalId, userId })
+  }
 }

@@ -3,15 +3,19 @@ import { Proposal } from './proposals.entity';
 import { ProposalDto } from './dto/proposal.dto';
 import { User } from '../users/user.entity';
 import { PROPOSALS_REPOSITORY } from '../../core/constants';
+import { VotesService } from '../votes/votes.service';
 
 @Injectable()
 export class ProposalsService {
-  constructor(@Inject(PROPOSALS_REPOSITORY) private readonly proposalRepository: typeof Proposal) { }
+  constructor(@Inject(PROPOSALS_REPOSITORY)
+    private readonly proposalRepository: typeof Proposal,
+    private readonly votesService: VotesService,
+  ) { }
 
   async create(proposal: ProposalDto, userId): Promise<Proposal> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return await this.proposalRepository.create<Proposal>({ ...proposal, userId });
+    return await this.proposalRepository.create({ ...proposal, userId });
   }
 
   async findAll(): Promise<Proposal[]> {
@@ -22,7 +26,12 @@ export class ProposalsService {
 
   // Increment vote on proposal and add a row to Vote
   async increment(id, userId): Promise<Proposal> {
-    return await this.proposalRepository.increment(
+    try {
+      await this.votesService.create(id, userId);
+    } catch (error) {
+      console.log("ERROR on increment: ", error);
+    }
+    return this.proposalRepository.increment(
       'votes', { where: { id }}
     )
   }
