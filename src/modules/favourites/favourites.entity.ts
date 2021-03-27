@@ -39,7 +39,7 @@ export class Favourite extends Model<Favourite> {
     type: DataType.INTEGER,
     allowNull: true,
   })
-  votes: string;
+  votes: number;
 
   @Column({
     type: DataType.TEXT,

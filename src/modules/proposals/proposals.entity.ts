@@ -33,7 +33,7 @@ export class Proposal extends Model<Proposal> {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  votes: string;
+  votes: number;
 
   @Column({
     type: DataType.BOOLEAN,
