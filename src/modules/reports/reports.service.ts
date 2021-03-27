@@ -28,6 +28,13 @@ export class ReportsService {
     });
   }
 
+  async findAllByUser(userId): Promise<Report[]> {
+    return await this.reportRepository.findAll({
+      where: { userId: userId },
+      include: [{ model: User, attributes: {exclude: ['password'] }}],
+    });
+  }
+
   async delete(id, userId) {
     return await this.reportRepository.destroy({ where: { id, userId }});
   }
