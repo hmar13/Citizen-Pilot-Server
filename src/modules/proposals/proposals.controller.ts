@@ -29,9 +29,23 @@ export class ProposalsController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Put(':id')
-  async update(@Param('id') id: number, @Body() post: ProposalDto, @Request() req): Promise<ProposalEntity> {
-    const { numberOfAffectedRows, updatedPost } = await this.proposalService.update(id, post, req.user.id);
+  @Put('approved/true/:id')
+  async approvedTrue(@Param('id') id: number): Promise<ProposalEntity> {
+    const { numberOfAffectedRows, updatedPost } =
+      await this.proposalService.approvedTrue(id);
+
+    if (numberOfAffectedRows === 0) {
+        throw new NotFoundException('This Post doesn\'t exist');
+    }
+    return updatedPost;
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Put('approved/false/:id')
+  async approvedFalse(@Param('id') id: number): Promise<ProposalEntity> {
+    const { numberOfAffectedRows, updatedPost } =
+      await this.proposalService.approvedFalse(id);
+
     if (numberOfAffectedRows === 0) {
         throw new NotFoundException('This Post doesn\'t exist');
     }
@@ -47,6 +61,18 @@ export class ProposalsController {
     }
     return post;
   }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Put(':id')
+  async update(@Param('id') id: number, @Body() post: ProposalDto, @Request() req): Promise<ProposalEntity> {
+    const { numberOfAffectedRows, updatedPost } = await this.proposalService.update(id, post, req.user.id);
+    if (numberOfAffectedRows === 0) {
+        throw new NotFoundException('This Post doesn\'t exist');
+    }
+    return updatedPost;
+  }
+
+
 
   @UseGuards(AuthGuard('jwt'))
   @Delete(':id')

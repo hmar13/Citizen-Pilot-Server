@@ -51,4 +51,20 @@ export class ProposalsService {
 
     return { numberOfAffectedRows, updatedPost };
   }
+
+    async approvedTrue(id) {
+    const [numberOfAffectedRows, [updatedPost]] = await this.proposalRepository.update(
+      { approved: true }, { where: { id }, returning: true }
+    );
+
+    return { numberOfAffectedRows, updatedPost };
+  }
+
+  async approvedFalse(id) {
+    const [numberOfAffectedRows, [updatedPost]] = await this.proposalRepository.update(
+      { approved: false }, { where: { id }, returning: true }
+    );
+
+    return { numberOfAffectedRows, updatedPost };
+  }
 }
