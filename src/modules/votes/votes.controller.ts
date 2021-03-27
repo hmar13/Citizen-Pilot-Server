@@ -10,7 +10,12 @@ export class VotesController {
 
   @Get()
   async findAll() {
-    // get all votes in the db
     return await this.votesService.findAll();
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('user')
+  async remove(@Request() req) {
+    return await this.votesService.findVotesById(req.user.id);
   }
 }

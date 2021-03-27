@@ -16,4 +16,10 @@ export class VotesService {
     // @ts-ignore
     return await this.votesRepository.create<Votes>({ proposalId, userId })
   }
+
+  async findVotesById(userId): Promise<Votes[]> {
+    return await this.votesRepository.findAll<Votes>({
+      where: { userId: userId },
+    });
+  }
 }
