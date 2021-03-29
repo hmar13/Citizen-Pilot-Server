@@ -1,4 +1,11 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
 import { Employee } from '../employees/employee.entity';
 
 @Table
@@ -16,7 +23,7 @@ export class Contact extends Model<Contact> {
   phone: number;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
   email: string;

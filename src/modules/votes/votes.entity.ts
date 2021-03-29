@@ -4,12 +4,13 @@ import {
   Model,
   DataType,
   ForeignKey,
-  BelongsTo,
 } from 'sequelize-typescript';
+import { Proposal } from '../proposals/proposals.entity';
 import { User } from '../users/user.entity';
 
 @Table
-export class Favourite extends Model<Favourite> {
+export class Votes extends Model<Votes> {
+  @ForeignKey(() => Proposal)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
@@ -22,7 +23,4 @@ export class Favourite extends Model<Favourite> {
     allowNull: false,
   })
   userId: number;
-
-  @BelongsTo(() => User)
-  user: User;
 }

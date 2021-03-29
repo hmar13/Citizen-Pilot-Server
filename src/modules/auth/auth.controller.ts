@@ -1,4 +1,3 @@
-
 import { Controller, Body, Post, UseGuards, Request } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
@@ -9,10 +8,10 @@ import { DoesEmployeeExist } from '../../core/guards/doesEmployeeExist.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   @UseGuards(AuthGuard('local'))
-  @Post('login')
+  @Post('login/user')
   async login(@Request() req) {
     return await this.authService.login(req.user);
   }
@@ -25,7 +24,7 @@ export class AuthController {
 
   @UseGuards(DoesEmployeeExist)
   @Post('empsignup')
-  async empSignup(@Body() user: EmployeeDto) {
-    return await this.authService.empCreate(user);
+  async empSignup(@Body() employee: EmployeeDto) {
+    return await this.authService.empCreate(employee);
   }
 }

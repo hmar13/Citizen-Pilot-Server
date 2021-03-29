@@ -2,17 +2,17 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
 export class Employee extends Model<Employee> {
-  // @Column({
-  //   type: DataType.INTEGER,
-  //   allowNull: false,
-  // })
-  // userId: number;
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  fname: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  lname: string;
 
   @Column({
     type: DataType.STRING,
@@ -28,9 +28,20 @@ export class Employee extends Model<Employee> {
   password: string;
 
   @Column({
-    type: DataType.ENUM,
-    values: ['male', 'female'],
-    allowNull: false,
+    type: DataType.STRING,
+    allowNull: true,
   })
-  gender: string;
+  department: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  position: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  access: string;
 }

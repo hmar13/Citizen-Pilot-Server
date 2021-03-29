@@ -14,7 +14,4 @@ export class ProjectDto {
   readonly completion: number;
 
   readonly image: string;
-
-  @IsNotEmpty()
-  readonly votes: string;
 }

@@ -4,7 +4,7 @@ import {
   Model,
   DataType,
   ForeignKey,
-  BelongsTo
+  BelongsTo,
 } from 'sequelize-typescript';
 import { User } from '../users/user.entity';
 
@@ -43,7 +43,7 @@ export class Report extends Model<Report> {
       'envrionment',
       'sanitation',
       'utilities',
-    ]
+    ],
   })
   category: string;
 
