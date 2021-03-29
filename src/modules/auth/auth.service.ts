@@ -13,14 +13,12 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string) {
-    // find if user exist with this email
     const user = await this.userService.findOneByEmail(username);
     const employee = await this.employeeService.findOneByEmail(username);
     if (!user && !employee) {
       return null;
     }
 
-    // find if user password match
     if (user) {
       const match = await this.comparePassword(pass, user.password);
       if (!match) {
@@ -30,7 +28,6 @@ export class AuthService {
       return result;
     }
 
-    // find if employee password match
     if (employee) {
       const match = await this.comparePassword(pass, employee.password);
       if (!match) {
@@ -47,36 +44,17 @@ export class AuthService {
   }
 
   public async create(user) {
-    // hash the password
     const pass = await this.hashPassword(user.password);
-
-    // create the user
     const newUser = await this.userService.create({ ...user, password: pass });
-
-    // tslint:disable-next-line: no-string-literal
     const { password, ...result } = newUser['dataValues'];
 
-    // generate token
-    // const token = await this.generateToken(result);
-
-    // return the user and the token
     return { user: result };
   }
 
   public async empCreate(employee) {
-    // hash the password
     const pass = await this.hashPassword(employee.password);
-
-    // create the employee
     const newEmployee = await this.employeeService.create({ ...employee, password: pass });
-
-    // tslint:disable-next-line: no-string-literal
     const { password, ...result } = newEmployee['dataValues'];
-
-    // generate token
-    // const token = await this.generateToken(result);
-
-    // return the employee and the token
     return { employee: result };
   }
 

@@ -28,5 +28,4 @@ export class AuthController {
   async empSignup(@Body() employee: EmployeeDto) {
     return await this.authService.empCreate(employee);
   }
-
 }

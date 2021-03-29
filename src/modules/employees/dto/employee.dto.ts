@@ -1,9 +1,6 @@
 import { IsNotEmpty, MinLength, IsEmail } from 'class-validator';
 
 export class EmployeeDto {
-  // @IsNotEmpty()
-  // readonly userId: number;
-
   @IsNotEmpty()
   readonly fname: string;
 

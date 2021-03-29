@@ -42,10 +42,3 @@ export class User extends Model<User> {
   @BelongsToMany(() => Proposal, () => Votes)
   proposals: Proposal[]
 }
-
-
-// beer.associate = model => {
-//   beer.belongsToMany(model.User, { through: 'UserBeers' });
-// };
-// return beer;
-// };
