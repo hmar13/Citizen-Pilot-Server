@@ -1,17 +1,17 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Favourite } from './favourites.entity';
-import { FavouritesDto } from './dto/favourites.dto';
-import { User } from '../users/user.entity';
 import { FAVOURITES_REPOSITORY } from '../../core/constants';
 
 @Injectable()
 export class FavouritesService {
-  constructor(@Inject(FAVOURITES_REPOSITORY) private readonly favouritesRepository: typeof Favourite) { }
+  constructor(@Inject(FAVOURITES_REPOSITORY)
+  private readonly favouritesRepository: typeof Favourite,
+  ) { }
 
-  async create(favourites: FavouritesDto, userId): Promise<Favourite> {
+  async create(proposalId: number, userId: number): Promise<Favourite> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return await this.favouritesRepository.create<Favourite>({ ...favourites, userId})
+    return await this.favouritesRepository.create<Favourite>({ ...proposalId, userId})
   }
 
   async findAll(userId): Promise<Favourite[]> {
@@ -23,11 +23,4 @@ export class FavouritesService {
   async delete(id, userId) {
     return await this.favouritesRepository.destroy({ where: { id, userId }})
   }
-
-  // async update(id, data, userId) {
-  //   const [numberOfAffectedRows, [updatedPost]] = await this.favouritesRepository.update(
-  //     { ...data }, { where: { id, userId }, returning: true });
-
-  //   return { numberOfAffectedRows, updatedPost };
-  // }
 }

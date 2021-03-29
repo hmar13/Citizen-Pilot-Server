@@ -24,8 +24,11 @@ export class ProposalsService {
     });
   }
 
-  // Increment vote on proposal and add a row to Vote
-  async increment(id, userId): Promise<Proposal> {
+  async findOne(id: number): Promise<Proposal> {
+    return await this.proposalRepository.findOne<Proposal>({ where: { id }});
+  }
+
+  async increment(id: number, userId: number): Promise<Proposal> {
     try {
       await this.votesService.create(id, userId);
     } catch (error) {
@@ -42,17 +45,17 @@ export class ProposalsService {
     });
   }
 
-  async delete(id, userId) {
+  async delete(id: number, userId: number) {
     return await this.proposalRepository.destroy({ where: { id, userId } });
   }
 
-  async update(id, data, userId) {
+  async update(id: number, data, userId: number) {
     const [numberOfAffectedRows, [updatedPost]] = await this.proposalRepository.update({ ...data }, { where: { id, userId }, returning: true });
 
     return { numberOfAffectedRows, updatedPost };
   }
 
-    async approvedTrue(id) {
+    async approvedTrue(id: number) {
     const [numberOfAffectedRows, [updatedPost]] = await this.proposalRepository.update(
       { approved: true }, { where: { id }, returning: true }
     );

@@ -22,6 +22,15 @@ export class ProposalsController {
     return post;
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<ProposalEntity> {
+    const post = await this.proposalService.findOne(id);
+    if (!post) {
+      throw new NotFoundException('This Post doesn\'t exist');
+    }
+    return post;
+  }
+
   @UseGuards(AuthGuard('jwt'))
   @Post()
   async create(@Body() post: ProposalDto, @Request() req): Promise<ProposalEntity> {
