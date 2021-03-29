@@ -1,19 +1,25 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsToMany } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  ForeignKey,
+  BelongsToMany,
+} from 'sequelize-typescript';
 import { User } from '../users/user.entity';
 import { Votes } from '../votes/votes.entity';
-
 
 @Table
 export class Proposal extends Model<Proposal> {
   @Column({
-      type: DataType.STRING,
-      allowNull: false,
+    type: DataType.STRING,
+    allowNull: false,
   })
   title: string;
 
   @Column({
-      type: DataType.TEXT,
-      allowNull: false,
+    type: DataType.TEXT,
+    allowNull: false,
   })
   description: string;
 
@@ -49,5 +55,5 @@ export class Proposal extends Model<Proposal> {
   userId: number;
 
   @BelongsToMany(() => User, () => Votes)
-  users: User[]
+  users: User[];
 }

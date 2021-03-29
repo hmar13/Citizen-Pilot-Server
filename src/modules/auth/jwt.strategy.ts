@@ -22,7 +22,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     const user = await this.userService.findOneById(payload.id);
     const employee = await this.employeeService.findOneById(payload.id);
     if (!user && !employee) {
-      throw new UnauthorizedException('You are not authorized to perform the operation');
+      throw new UnauthorizedException(
+        'You are not authorized to perform the operation',
+      );
     }
     return payload;
   }

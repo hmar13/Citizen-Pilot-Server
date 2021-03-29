@@ -53,7 +53,10 @@ export class AuthService {
 
   public async empCreate(employee) {
     const pass = await this.hashPassword(employee.password);
-    const newEmployee = await this.employeeService.create({ ...employee, password: pass });
+    const newEmployee = await this.employeeService.create({
+      ...employee,
+      password: pass,
+    });
     const { password, ...result } = newEmployee['dataValues'];
     return { employee: result };
   }

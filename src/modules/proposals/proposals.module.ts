@@ -7,6 +7,6 @@ import { VotesModule } from '../votes/votes.module';
 @Module({
   imports: [VotesModule],
   providers: [ProposalsService, ...proposalsProviders],
-  controllers: [ProposalsController]
+  controllers: [ProposalsController],
 })
 export class ProposalsModule {}

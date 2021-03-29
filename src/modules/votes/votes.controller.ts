@@ -4,7 +4,7 @@ import { VotesService } from './votes.service';
 
 @Controller('votes')
 export class VotesController {
-  constructor(private readonly votesService: VotesService) { }
+  constructor(private readonly votesService: VotesService) {}
 
   @Get()
   async findAll() {

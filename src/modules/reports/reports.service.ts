@@ -4,38 +4,40 @@ import { ReportsDto } from './dto/reports.dto';
 import { User } from '../users/user.entity';
 import { REPORTS_REPOSITORY } from '../../core/constants';
 
-
 @Injectable()
 export class ReportsService {
-  constructor(@Inject(REPORTS_REPOSITORY) private readonly reportRepository: typeof Report) { }
+  constructor(
+    @Inject(REPORTS_REPOSITORY)
+    private readonly reportRepository: typeof Report,
+  ) {}
 
   async create(reports: ReportsDto, userId): Promise<Report> {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    return await this.reportRepository.create<Report>({ ...reports, userId })
+    return await this.reportRepository.create<Report>({ ...reports, userId });
   }
 
   async findAll(): Promise<Report[]> {
     return await this.reportRepository.findAll<Report>({
-      include: [{ model: User, attributes: {exclude: ['password'] }}],
+      include: [{ model: User, attributes: { exclude: ['password'] } }],
     });
   }
 
-  async findOne(id): Promise<Report> {
+  async findOne(id: number): Promise<Report> {
     return await this.reportRepository.findOne({
       where: { id },
-      include: [{ model: User, attributes: {exclude: ['password'] }}],
+      include: [{ model: User, attributes: { exclude: ['password'] } }],
     });
   }
 
-  async findAllByUser(userId): Promise<Report[]> {
+  async findAllByUser(userId: number): Promise<Report[]> {
     return await this.reportRepository.findAll({
       where: { userId: userId },
-      include: [{ model: User, attributes: {exclude: ['password'] }}],
+      include: [{ model: User, attributes: { exclude: ['password'] } }],
     });
   }
 
-  async delete(id, userId) {
-    return await this.reportRepository.destroy({ where: { id, userId }});
+  async delete(id: number, userId: number) {
+    return await this.reportRepository.destroy({ where: { id, userId } });
   }
 }

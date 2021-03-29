@@ -1,10 +1,17 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
-import {Employee} from '../employees/employee.entity';
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
+import { Employee } from '../employees/employee.entity';
 
 @Table
 export class Project extends Model<Project> {
   @Column({
-    type:DataType.STRING,
+    type: DataType.STRING,
     allowNull: false,
   })
   title: string;
@@ -12,7 +19,7 @@ export class Project extends Model<Project> {
   @Column({
     type: DataType.TEXT,
     allowNull: false,
-})
+  })
   description: string;
 
   @Column({
@@ -33,13 +40,13 @@ export class Project extends Model<Project> {
   })
   image: string;
 
-  @ForeignKey(()=> Employee)
+  @ForeignKey(() => Employee)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
   employeeId: number;
 
-  @BelongsTo(()=> Employee)
+  @BelongsTo(() => Employee)
   employee: Employee;
 }

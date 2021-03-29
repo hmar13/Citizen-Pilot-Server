@@ -15,7 +15,7 @@ import { Favourite as FavouriteEntity } from './favourites.entity';
 
 @Controller('favourites')
 export class FavouritesController {
-  constructor(private readonly favouriteService: FavouritesService) { }
+  constructor(private readonly favouriteService: FavouritesService) {}
 
   @UseGuards(AuthGuard('jwt'))
   @Get()
@@ -25,8 +25,11 @@ export class FavouritesController {
 
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  async create(@Body() proposalId: number, @Request() req): Promise<FavouriteEntity> {
-    return await this.favouriteService.create(proposalId, req.user.id)
+  async create(
+    @Body() proposalId: number,
+    @Request() req,
+  ): Promise<FavouriteEntity> {
+    return await this.favouriteService.create(proposalId, req.user.id);
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -35,7 +38,7 @@ export class FavouritesController {
     const deleted = await this.favouriteService.delete(id, req.user.id);
 
     if (deleted === 0) {
-      throw new NotFoundException('This Post Doesn\'t exist');
+      throw new NotFoundException("This Post Doesn't exist");
     }
 
     return 'Sucessfully delete';

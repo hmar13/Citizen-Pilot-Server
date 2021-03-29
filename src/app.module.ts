@@ -32,7 +32,6 @@ import { VotesModule } from './modules/votes/votes.module';
     FavouritesModule,
     ReportsModule,
     VotesModule,
-
   ],
   controllers: [AppController],
   providers: [AppService],
