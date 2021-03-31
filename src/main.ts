@@ -1,3 +1,5 @@
+
+require('dotenv').config({ path: `../${process.env.NODE_ENV}.env` });
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidateInputPipe } from './core/pipes/validate.pipe';
