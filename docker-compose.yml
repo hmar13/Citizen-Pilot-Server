@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=mattdodsworth
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=production_database_name
+    ports:
+      - 5432:5432
