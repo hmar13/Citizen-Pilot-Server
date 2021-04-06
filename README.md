@@ -8,7 +8,6 @@
 
 - [Description](#description)
 - [Getting Started](#getting-started)
-- [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Contributors](#contributors)
 
