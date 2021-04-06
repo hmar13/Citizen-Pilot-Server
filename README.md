@@ -1,9 +1,5 @@
 # Citizen-Pilot
 
-<p align="center">
-  <img src="assets/images/logo.png" width="300" />
-</p>
-
 > Increasing citizen participation in developing nations.
 
 ---
@@ -65,15 +61,6 @@ Getting started
 ### [Back to the top](#citizen-pilot)
 
 ---
-
-## ScreenShots
-
-<p float='left'>
-  <img src="assets/images/citizen-pilot-sample1.png"/>
-  <img src="assets/images/citizen-pilot-sample2.png"/>
-  <img src="assets/images/citizen-pilot-sample3.png"/>
-  <img src="assets/images/citizen-pilot-sample4.png"/>
-</p>
 
 ## Technologies
 
